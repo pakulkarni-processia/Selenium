@@ -1,0 +1,7 @@
+<suite name="Enovia-3DExperience">
+<test name="Jenkin">
+<classes>
+<class name="TestRunner.TestRunner"></class>
+</classes>
+</test>
+</suite>

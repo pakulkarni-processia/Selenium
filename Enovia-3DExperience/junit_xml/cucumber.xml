@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="1" time="82.684787">
+<testcase classname="Validate creation of EBOM and Release of all parts" name="Login to 3DExperience for all users" time="82.684787">
+<system-out><![CDATA[Given Experience url is Open................................................passed
+When experience logo is displayed...........................................passed
+And Enter credentials in "admin_platform" and "enoviaV6" and click on Login button.passed
+Then Verify Login is success................................................passed
+And Click on Profile logo and update Credentials............................passed
+And Verify Credentials are updated for user.................................passed
+]]></system-out>
+</testcase>
+</testsuite>
