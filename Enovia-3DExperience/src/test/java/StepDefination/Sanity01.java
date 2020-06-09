@@ -1,6 +1,7 @@
 package StepDefination;
 
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.Assert;
@@ -28,9 +29,12 @@ import PageObjects.COpropertiespage;
 import PageObjects.CreateCO;
 import PageObjects.CreatePart;
 import PageObjects.Login;
+import PageObjects.Messagedetailspage;
+import PageObjects.Notificationandapprovalpage;
 import PageObjects.PartEBOMPage;
 import PageObjects.Partchangemanagementpage;
 import PageObjects.SetCredentials;
+import PageObjects.Taskapprovalpage;
 
 public class Sanity01 {
 
@@ -50,7 +54,9 @@ public class Sanity01 {
 	public COpropertiespage content;
 	public CApropertiespage capage;
 	public CAContentPage cacontent;
-	
+	public Notificationandapprovalpage mails;
+	public Messagedetailspage maildetails;
+	public Taskapprovalpage task;
 	
 	@Before
 	public void beforeexecution()
@@ -70,7 +76,7 @@ public class Sanity01 {
 		driver.get("https://ootb19x.processia2003.com/3dspace/");
 		driver.manage().window().maximize();
 		
-		log = new Login(driver);
+		//log = new Login(driver);
 	
 	}
 
@@ -111,7 +117,7 @@ public class Sanity01 {
 		log.clicklogin();
 		
 		System.out.println("Wait Time Started");
-		Thread.sleep(35000);
+		Thread.sleep(40000);
 			    //throw new PendingException();
 		driver.manage().timeouts().implicitlyWait(250, TimeUnit.SECONDS);
 		System.out.println("Wait Time Ended");
@@ -320,7 +326,7 @@ public class Sanity01 {
 		
 		partproperty = new PartEBOMPage(driver);
 		
-		
+		Thread.sleep(2000);
 		//partproperty.clickonediticon();
 		partproperty.clickdisplaymodeicon();
 		partproperty.selecttableview();
@@ -407,7 +413,7 @@ public class Sanity01 {
 		partproperty.clicknewchangeorder();
 		
 		driver.switchTo().defaultContent();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 	
 		
 	}
@@ -424,7 +430,7 @@ public class Sanity01 {
 		co.clickok();
 		
 		driver.switchTo().defaultContent();
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 	}
 
 	@Then("^navigate to categories Change management$")
@@ -443,8 +449,8 @@ public class Sanity01 {
 	    // Write code here that turns the phrase above into concrete actions
 	  //  throw new PendingException();
 		
-	chngmgntmnt = new Partchangemanagementpage(driver);
-	statusreport = new ReportFunctions(driver);
+		chngmgntmnt = new Partchangemanagementpage(driver);
+		statusreport = new ReportFunctions(driver);
 	
 		chngmgntmnt.navigatetoframe();
 		chngmgntmnt.iscodisplayed();
@@ -471,7 +477,7 @@ public class Sanity01 {
 		
 		chngmgntmnt.openco();
 		driver.switchTo().defaultContent();
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 	}
 
 	//@Then("^verify all selected part is added under Content, Proposed Change\\.$")
@@ -572,7 +578,7 @@ public class Sanity01 {
 		content = new COpropertiespage(driver);
 		driver.switchTo().defaultContent();
 		content.clickcontent();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		
 	}
 
@@ -610,15 +616,15 @@ public class Sanity01 {
 		capage.clickediticon();
 		Thread.sleep(1000);
 		capage.clickaddpeoplelink();
-		Thread.sleep(1000);
+		Thread.sleep(2500);
 		driver.switchTo().defaultContent();
-		Thread.sleep(1000);
+		Thread.sleep(1500);
 		capage.globalsearch();
 		Thread.sleep(7000);
 		capage.selectreviewer();
 		
 		capage.clickonOK();
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 	}
 
 	@When("^Click on Done$")
@@ -629,9 +635,9 @@ public class Sanity01 {
 		capage = new CApropertiespage(driver);
 		capage.switchframespropertiespage();
 		capage.clickondone();
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		driver.switchTo().defaultContent();
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 	}
 
 	@When("^Promote CA to In work state\\.$")
@@ -675,7 +681,7 @@ public class Sanity01 {
 	    //throw new PendingException();
 		
 		cacontent = new CAContentPage(driver);
-		
+		Thread.sleep(2000);
 		cacontent.switchframescontentpage();
 		cacontent.selectallparts();
 	}
@@ -708,6 +714,278 @@ public class Sanity01 {
 		statusreport.screenshot("Mass Promote success.jpg");
 		cacontent.clickclosebutton();
 		
+	}
+	
+	@Given("^Navigate to CA properties page$")
+	public void Navigate_to_CA_properties_page() throws Throwable{
+		
+		capage = new CApropertiespage(driver);	
+		driver.switchTo().defaultContent();
+		capage.clickcaname();
+		Thread.sleep(2000);
+	}
+	
+	@Given("^Click on Promote$")
+	public void click_on_Promote() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	   // throw new PendingException();
+		
+		capage = new CApropertiespage(driver);
+		
+		capage.switchframelifecycle();
+		capage.clickpromote();
+		Thread.sleep(8000);
+		capage.switchtodefault();
+	}
+
+	@Then("^verify CA is promoted to In Approval state$")
+	public void verify_CA_is_promoted_to_In_Approval_state() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    //throw new PendingException();
+		
+		capage = new CApropertiespage(driver);
+		statusreport = new ReportFunctions(driver);
+		
+		capage.switchframespropertiespage();
+		
+		String castate = capage.getcastate();
+		if (castate.equalsIgnoreCase("In Approval "))
+		{
+			statusreport.logger("CA Promoted to: "+castate+" state successfully");
+			statusreport.screenshot( "CA promote to In Approval state success.jpg");
+		}
+		else
+		{
+			statusreport.logger("CA promote failed");
+			statusreport.screenshot("CA promote to In Approval state Failed.jpg");
+		}
+	}
+
+	@When("^navigate to Messages \\(Icon\\)$")
+	public void navigate_to_Messages_Icon() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    //throw new PendingException();
+		home = new HomePage(driver);
+		
+		home.switchtodefault();
+		home.getparentwindow();
+		home.clickonnotification();
+		Thread.sleep(5000);
+		home.switchwindows("Switched to Notification window");
+			
+		
+	}
+
+	@When("^Click on New Task Assignment Notice$")
+	public void click_on_New_Task_Assignment_Notice() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    // new PendingException();
+		
+		statusreport = new ReportFunctions(driver);
+		home = new HomePage(driver);
+		// Perform the actions on new window
+		
+		mails = new Notificationandapprovalpage(driver);
+		
+		String window = driver.getWindowHandle();
+		statusreport.logger("Current window handle is:"+window);
+		mails.switchframe();
+		
+		Thread.sleep(4000);
+		mails.clicknewtaskassign();
+		Thread.sleep(4000);
+	home.switchwindows("Window switched to message details page");
+		
+	}
+
+	@When("^Click on Inbox Task IT-XXX no$")
+	public void click_on_Inbox_Task_IT_XXX_no() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    //throw new PendingException();
+		home = new HomePage(driver);
+		statusreport = new ReportFunctions(driver);
+		
+		Thread.sleep(1000);
+		// Perform the actions on new window
+		maildetails = new Messagedetailspage(driver);
+		
+		maildetails.switchframemessagedetailspage();
+		Thread.sleep(1000);
+		maildetails.TaskID();
+		Thread.sleep(4000);
+		home.switchwindows("switched to task approval window");
+		
+	}
+
+	@When("^Click on Approve button from tool bar$")
+	public void click_on_Approve_button_from_tool_bar() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    //throw new PendingException();
+		
+		
+		statusreport = new ReportFunctions(driver);
+		// Perform the click operation that opens new window
+
+		// Switch to new window opened
+		
+
+		// Perform the actions on new window
+		task = new Taskapprovalpage(driver);
+		
+		task.switchframeonapprovalpage();
+		task.clickonapproval();
+		
+		task.switchtodefault();
+		Thread.sleep(5000);
+	
+	}
+	
+
+	@When("^enter comments and click on Approve button$")
+	public void enter_comments_and_click_on_Approve_button() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	   // throw new PendingException();
+		
+		statusreport = new ReportFunctions(driver);
+
+		task = new Taskapprovalpage(driver);
+		
+		task.switchtocommentframe();
+		task.enterapprovalcomment();
+		task.clickapprovebutton();
+		Thread.sleep(6000);
+		task.switchtodefault();
+		Thread.sleep(1000);
+		task.switchframeonapprovalpage();
+		
+	}
+
+	@When("^Close the window and refresh CA page$")
+	public void close_the_window_and_refresh_CA_page() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	   // throw new PendingException();
+		
+		statusreport = new ReportFunctions(driver);
+
+		task = new Taskapprovalpage(driver);
+		home = new HomePage(driver);
+		
+		String status = task.checkapprovalstatus();
+		
+		if (status.equals("Approved "))
+		{
+			statusreport.logger("Status is Approved");
+		}
+		else
+		{
+			statusreport.logger("Status is not Approved");
+		}	
+			
+			
+		home.closecurrentwindow();
+		home.closecurrentwindow();
+		home.closecurrentwindow();
+		
+		    home.clickrefreshbutton();
+		    Thread.sleep(3000);
+		    
+		 
+	}
+
+	@Then("^verify CA is promoted to Approved state$")
+	public void verify_CA_is_promoted_to_Approved_state() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	   // throw new PendingException();
+		capage = new CApropertiespage(driver);
+		statusreport = new ReportFunctions(driver);
+		
+		capage.switchframespropertiespage();
+		
+		String castate = capage.getcastate();
+		if (castate.equalsIgnoreCase("Approved "))
+		{
+			statusreport.logger("CA Promoted to: "+castate+" state successfully");
+			statusreport.screenshot( "CA promote to Approved state success.jpg");
+		}
+		else
+		{
+			statusreport.logger("CA promote failed");
+			statusreport.screenshot("CA promote to Approved state Failed.jpg");
+		}
+		
+	}
+
+	@Given("^click on CO name from CA properties page$")
+	public void click_on_CO_name_from_CA_properties_page() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    //throw new PendingException();
+		
+		capage = new CApropertiespage(driver);
+		statusreport = new ReportFunctions(driver);
+		
+		capage.clickconumber();
+		Thread.sleep(2000);
+		
+	}
+
+	@Then("^verify CO page is open$")
+	public void verify_CO_page_is_open() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	@Then("^click on CO name from Categories, Properties page display$")
+	public void click_on_CO_name_from_Categories_Properties_page_display() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	@Then("^Click on Approvals then click on task ID$")
+	public void click_on_Approvals_then_click_on_task_ID() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	@Then("^click on Approve from tool bar$")
+	public void click_on_Approve_from_tool_bar() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	@Then("^enter comments, click on Approve$")
+	public void enter_comments_click_on_Approve() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	@Then("^close the window$")
+	public void close_the_window() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	@Then("^verify CO is promoted to Complete state Automatically$")
+	public void verify_CO_is_promoted_to_Complete_state_Automatically() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	@Given("^navigate to categories, content$")
+	public void navigate_to_categories_content() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	@Given("^click on CA$")
+	public void click_on_CA() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	@Then("^verify CA is promoted to Complete state and part are promoted to Released state\\.$")
+	public void verify_CA_is_promoted_to_Complete_state_and_part_are_promoted_to_Released_state() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
 	}
 
 	

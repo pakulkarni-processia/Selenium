@@ -1,6 +1,9 @@
 package PageObjects;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -12,10 +15,22 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import StepDefination.ReportFunctions;
+
 public class HomePage {
 
+	
+	public String parentwindow;
+	public ArrayList<String> windowlist; 
+	public int windowcount;
+	public Set<String> windowhandles;
+	
 	WebDriver driver;
 	List<WebElement> List;
+	ReportFunctions statusreport;
+	
+	Notificationandapprovalpage approve;
+	Taskapprovalpage task;
 	
 	public  HomePage(WebDriver newdriver)
 	{
@@ -29,14 +44,24 @@ public class HomePage {
 	@FindBy(xpath="//div[@class='topbar-menu']")
 	WebElement topbarmenu;
 	
+	@FindBy(xpath="//div[@class='notifications-counter']")
+	WebElement notification;
+	
+	@FindBy(xpath="//button[@class='refresh']")
+	WebElement refreshbutton;
+	
 	public String loginsuccess()
 	{
+		statusreport = new ReportFunctions(driver);
+		
 		if(topbarmenu.isDisplayed())
 		{
+			statusreport.logger("Topmenu bar displayed");
 			return "True";
 		}
 		else 
 		{
+			statusreport.logger("Topmenu bar not displayed");
 			return "False";
 		}
 	}
@@ -180,7 +205,134 @@ public class HomePage {
 								}
 	}
 	
+	public void clickonnotification()
+	{
+	notification.click();
+	statusreport.logger("Clicked on Notification button");
+	}
 
+	public void getparentwindow()
+	{
+		statusreport = new ReportFunctions(driver);
+		 parentwindow = driver.getWindowHandle();
+		statusreport.logger("Parent window handle is:"+parentwindow);
 	}
 	
+	@SuppressWarnings("unchecked")
+	public void switchtonotificationwindow() throws InterruptedException
+	{
+		
+		String parentwindow = driver.getWindowHandle();
+			statusreport.logger("Parent window handle is:"+parentwindow);
+		
+		// Switch to new window opened
+		Set<String>windowhandles = driver.getWindowHandles();
+		 windowlist = new ArrayList(windowhandles);
+		System.out.println(windowlist);
+		//count the handles Here count is=2
+		System.out.println("Count of windows:"+windowhandles.size()); 
+		
+		//Iterator<String> iterator = windowhandles.iterator();
+		
+		//while (iterator.hasNext())
+		//{
+		//String newwindow=iterator.next();
+		for(String handle:windowhandles)
+		{
+		if (!parentwindow.equalsIgnoreCase(handle))
+		{
+			driver.switchTo().window(handle);
+			statusreport.logger("Switched to Notifications window");
+			break;
+		}
+		
+		}
+		
+		approve = new Notificationandapprovalpage(driver);
+		
+		approve.navigateandapprovetask();
 
+
+		
+		for(String handle:windowhandles)
+		{
+		if (!parentwindow.equalsIgnoreCase(handle))
+		{
+			driver.switchTo().window(handle);
+			statusreport.logger("Window switched:"+handle);
+			driver.close();
+			statusreport.logger("Window Closed:"+handle);
+			driver.switchTo().window(parentwindow);
+		}
+		}
+		
+	}
+	
+	public void closecurrentwindow() throws InterruptedException
+	{
+		statusreport = new ReportFunctions(driver);
+	
+		windowhandles = driver.getWindowHandles();
+		windowlist = new ArrayList<String>(windowhandles);
+		windowcount = windowhandles.size();
+		
+		driver.switchTo().window(windowlist.get(windowcount-1));
+			driver.close();
+		    statusreport.logger("Window Closed");
+		   Thread.sleep(2000);
+					      		    
+		    driver.switchTo().window(windowlist.get(windowcount-2));
+		    statusreport.logger("Switched to next window:"+windowlist.get(windowcount-2));
+		
+		}
+	
+	public void switchtodefault()
+	{
+		statusreport = new ReportFunctions(driver);
+		
+		driver.switchTo().defaultContent();
+		statusreport.logger("Switoched to default frame");
+	}
+	
+	public void clickrefreshbutton()
+	{
+		statusreport = new ReportFunctions(driver);
+		refreshbutton.click();
+		statusreport.logger("Clicked on refresh button");
+	}
+	
+	
+	public void switchwindows(String message)
+	{
+		statusreport = new ReportFunctions(driver);
+	String currentwindow = driver.getWindowHandle();
+	statusreport.logger("Current window handle is:"+currentwindow);
+
+	// Switch to new window opened
+	windowhandles = driver.getWindowHandles();
+	windowlist = new ArrayList<String>(windowhandles);
+	System.out.println(windowlist);
+	//count the handles Here count is=2
+	windowcount = windowhandles.size();
+	statusreport.logger("Count of windows:"+windowhandles.size()); 
+
+	Iterator<String> iterator = windowhandles.iterator();
+	
+	while (iterator.hasNext())
+	{
+		String handle =iterator.next();
+		if (!currentwindow.equalsIgnoreCase(handle))
+		{
+			driver.switchTo().window(windowlist.get(windowcount-1));
+			statusreport.logger("Switched to window:"+windowlist.get(windowcount-1));
+			String title = driver.getTitle();
+			statusreport.logger("Current Window Title"+title);
+			statusreport.logger(message);
+	
+		}
+		statusreport.logger("Exited if condition");
+	}
+	statusreport.logger("Exited while loop");
+	}
+	
+}
