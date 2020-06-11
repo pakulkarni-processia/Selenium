@@ -301,6 +301,7 @@ public class Sanity01 {
 		
 		partproperty = new PartEBOMPage(driver);
 		
+		Thread.sleep(5000);
 		partproperty.ebom();
 		Thread.sleep(10000);
 		partproperty.ENCBOMframe();
