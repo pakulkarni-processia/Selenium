@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import StepDefination.ReadExcel;
+import StepDefination.ReportFunctions;
 
 public class COpropertiespage {
 
@@ -14,7 +15,8 @@ public class COpropertiespage {
 	WebDriverWait wait;
 	
 	public ReadExcel read;
-	
+	ReportFunctions statusreport;
+	HomePage home;
 	public  COpropertiespage(WebDriver newdriver)
 	{
 		driver = newdriver;
@@ -39,7 +41,7 @@ public class COpropertiespage {
 	@FindBy(xpath="//*[@id=\"AEFLifecyclePromote\"]")
 	WebElement promotebutton;
 	
-	@FindBy(xpath="/html/body/div[2]/form/table/tbody/tr[6]/td[4]")
+	@FindBy(xpath="//tr[@id='calc_Name']//td[@class='field' and @colspan='9']")
 	WebElement state;
 	
 	@FindBy(xpath="//li[@title='Content']")
@@ -48,28 +50,39 @@ public class COpropertiespage {
 	@FindBy(xpath="/html/body/form[1]/div[2]/div[5]/div[2]/table/tbody/tr[2]/td[6]")
 	WebElement CAname;
 	
+	@FindBy(xpath="//span[@class='extendedHeader type-name']")
+	WebElement COheader;
+	
+	@FindBy(xpath="//td[@class='tab-inactive' and @title='Approvals']")
+	WebElement Approvalstab;
+	
+	@FindBy(xpath="//tr[@class='even']//a[@class='object'and contains(text(),'IT-')]")
+	WebElement task;
+	
 	public void switchframe()
 	{
+		statusreport = new ReportFunctions(driver);
 		driver.switchTo().frame("content");
 		driver.switchTo().frame("detailsDisplay");
 		driver.switchTo().frame("portalDisplay");
 		driver.switchTo().frame("ECMCRCOAffectedItems");
+		statusreport.logger("Frame switched");
 	}
 	
 	public String verifyconumber()
 	{
-		
+		statusreport = new ReportFunctions(driver);
 		read = new ReadExcel();
 		
 		String [] array = read.readpartnumber("PartDetails", "Parent");
 		if (partno.equals(array[1]))
 				{
-			System.out.println("Part added in CO");
+			statusreport.logger("Part added in CO");
 			
 				}
 		else
 		{
-			System.out.println("Part no not present in CO");
+			statusreport.logger("Part no not present in CO");
 		}
 		return "True";
 		
@@ -77,73 +90,152 @@ public class COpropertiespage {
 	
 	public void clickconumber() throws InterruptedException
 	{
+		statusreport = new ReportFunctions(driver);
 		conumber.click();
-		System.out.println("Clicked on CO number on CO page");
+		statusreport.logger("Clicked on CO number on CO page");
 		Thread.sleep(1000);
 	}
 	
 	public void clickeditbutton()
 	{
+		statusreport = new ReportFunctions(driver);
 		editbutton.click();
-		System.out.println("Clicked on Edit icon");
+		statusreport.logger("Clicked on Edit icon");
 	}
 	
 	public void switchframeonpropertiespage()
 	{
+		statusreport = new ReportFunctions(driver);
 		driver.switchTo().frame("content");
 		driver.switchTo().frame("detailsDisplay");
 		driver.switchTo().frame("portalDisplay");
 		driver.switchTo().frame("ECMCOProperties");
-		System.out.println("Framed Switched");
+		statusreport.logger("Framed Switched");
 	}
 	
 	public void clickonapprovallistbutton()
 	{
+		statusreport = new ReportFunctions(driver);
 		approvallistbutton.click();
-		System.out.println("Clicked on Approval List");
+		statusreport.logger("Clicked on Approval List");
 	}
 	
 	public void clickondone()
 	{
+		statusreport = new ReportFunctions(driver);
 		Donebutton.click();
-		System.out.println("Clicked on Done button");
+		statusreport.logger("Clicked on Done button");
 	}
 	
 	public void promoteco() throws InterruptedException
 	{
+		statusreport = new ReportFunctions(driver);
 		promotebutton.click();
-		System.out.println("Clicked on Promote button");
+		statusreport.logger("Clicked on Promote button");
 		Thread.sleep(2000);
 	}
 	
 	public void switchframeonlifecycle()
 	{
+		statusreport = new ReportFunctions(driver);
 		driver.switchTo().frame("content");
 		driver.switchTo().frame("detailsDisplay");
 		driver.switchTo().frame("portalDisplay");
 		driver.switchTo().frame("ECMLifecycle");
 		driver.switchTo().frame("portalDisplay");
 		driver.switchTo().frame("AEFLifecycleBasic");
-		System.out.println("Frame switched");
+		statusreport.logger("Frame switched");
 	}
 	
 	public String getcostate()
 	{
+		statusreport = new ReportFunctions(driver);
 		String costate = state.getText();
-		System.out.println(costate);
+		statusreport.logger(costate);
 		return costate;
 	}
 	
 	public void clickcontent() throws InterruptedException
 	{
+		statusreport = new ReportFunctions(driver);
 		Content.click();
-		System.out.println("Clicked on Content category");
+		statusreport.logger("Clicked on Content category");
 		Thread.sleep(1000);
 	}
 	
 	public void clickcaname()
 	{
+		statusreport = new ReportFunctions(driver);
 		CAname.click();
-		System.out.println("Clicked on CA Name");
+		statusreport.logger("Clicked on CA Name");
 	}
+	
+	public void switchtodefaultframe()
+	{
+		statusreport = new ReportFunctions(driver);
+		driver.switchTo().defaultContent();
+		statusreport.logger("Switch to default frame on CO page");
+	}
+	
+	public void checkcopageload()
+	{
+		statusreport = new ReportFunctions(driver);
+		String coheader = COheader.getText();
+		if (coheader.equalsIgnoreCase("Change Order"))
+		{
+			statusreport.logger("CO page is loaded");
+		}
+		else
+		{
+			statusreport.logger("CO page is load failed");
+		}	
+	}
+	
+	public void switchtoframeforapprovals()
+	{
+		statusreport = new ReportFunctions(driver);
+		driver.switchTo().frame("content");
+		driver.switchTo().frame("detailsDisplay");
+		driver.switchTo().frame("portalDisplay");
+		driver.switchTo().frame("ECMLifecycle");
+		driver.switchTo().frame("portalDisplay");
+		
+		statusreport.logger("Frame switched");
+	}
+	
+	public void clickonapprovaltab() throws InterruptedException
+	{
+		statusreport = new ReportFunctions(driver);
+		Approvalstab.click();
+		Thread.sleep(1000);
+		statusreport.logger("Clicked on Approval tab");
+	}
+	
+	public void switchframefortaskapproval()
+	{
+		statusreport = new ReportFunctions(driver);
+		driver.switchTo().defaultContent();
+		
+		
+		
+		
+		driver.switchTo().frame("content");
+		driver.switchTo().frame("detailsDisplay");
+		driver.switchTo().frame("portalDisplay");
+		driver.switchTo().frame("ECMLifecycle");
+		driver.switchTo().frame("portalDisplay");
+		driver.switchTo().frame("AEFLifecycleApprovals");
+		
+		driver.switchTo().frame("listDisplay");
+		statusreport.logger("Frame switched");
+	}
+	
+	public void clickontasknumberforapprove()
+	{
+		statusreport = new ReportFunctions(driver);
+		task.click();
+		statusreport.logger("Clicked on Task");
+	}
+	
+
 }

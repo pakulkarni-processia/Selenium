@@ -282,7 +282,7 @@ public class HomePage {
 		   Thread.sleep(2000);
 					      		    
 		    driver.switchTo().window(windowlist.get(windowcount-2));
-		    statusreport.logger("Switched to next window:"+windowlist.get(windowcount-2));
+		    statusreport.logger("Switched to window:"+windowlist.get(windowcount-2));
 		
 		}
 	
@@ -291,7 +291,7 @@ public class HomePage {
 		statusreport = new ReportFunctions(driver);
 		
 		driver.switchTo().defaultContent();
-		statusreport.logger("Switoched to default frame");
+		statusreport.logger("Switched to default frame");
 	}
 	
 	public void clickrefreshbutton()

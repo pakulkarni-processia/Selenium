@@ -86,23 +86,24 @@ Then verify CA is promoted to Approved state
 
  
 
-#@SmokeTest9
-#Scenario: Promote CO to complete state
+@SmokeTest9
+Scenario: Promote CO to complete state
 #---Given CA page is open
-#And click on CO name from CA properties page
-#Then verify CO page is open
-#And click on CO name from Categories, Properties page display
-#And Click on Approvals then click on task ID
-#And click on Approve from tool bar
-#And enter comments, click on Approve
-#And close the window
-#Then verify CO is promoted to Complete state Automatically
+And click on CO name from CA properties page
+Then verify CO page is open
+And click on CO name from Categories, Properties page display
+And Click on Approvals then click on task ID
+And click on Approve from tool bar
+And enter comments, click on Approve
+And close the window
+Then verify CO is promoted to Complete state Automatically
 
  
 
-#@SmokeTest10
-#Scenario: CA promoted to complete state
+@SmokeTest10
+Scenario: CA promoted to complete state
 #Given CO page is open
-#And navigate to categories, content
-#And click on CA
-#Then verify CA is promoted to Complete state and part are promoted to Released state.
+And navigate to categories, content
+And click on CA
+Then verify CA is promoted to Complete state and part are promoted to Released state.
+#And Signout and close window

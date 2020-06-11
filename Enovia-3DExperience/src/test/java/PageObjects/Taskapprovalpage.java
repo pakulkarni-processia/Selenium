@@ -34,8 +34,7 @@ public class Taskapprovalpage {
 	@FindBy(xpath="//tr[@id='calc_ApprovalStatus']//td[@class='field'][1]")
 	WebElement Approvalstatus;
 	
-	@FindBy(xpath="//tr[@id='calc_State']//td[@class='field'][1]")
-	WebElement Approvedstatus;
+	
 	
 	public void clickonapproval()
 	{
@@ -92,12 +91,20 @@ public class Taskapprovalpage {
 		
 	}
 	
-	public String checkapprovedstatus()
+
+	
+	public void approvetaskandcheckstatus() throws InterruptedException
 	{
-		statusreport = new ReportFunctions(driver);
-		String status = Approvedstatus.getText();
-		statusreport.logger("Approval status is:"+status);
-		return status;
+		clickonapproval();
+		Thread.sleep(2000);
+		switchframeonapprovalpage();
+		enterapprovalcomment();
+		clickapprovebutton();
+		Thread.sleep(2000);
+		switchtodefault();
+		switchframeonapprovalpage();
+		checkapprovalstatus();
 		
 	}
+
 }
