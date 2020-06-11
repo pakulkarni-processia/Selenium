@@ -12,7 +12,7 @@ import cucumber.api.junit.Cucumber;
 		plugin = {"pretty:target/cucumber-pretty.txt","html:target/test-output-html","json:target/cucumber.json", "junit:junit_xml/cucumber.xml"},
 		monochrome = true, //display console output in readable format
 		strict = true, //it will check if any step is not defined
-		dryRun = true // top check mapping is proper between feature and steps
+		dryRun = false // top check mapping is proper between feature and steps
 		)
 
 
