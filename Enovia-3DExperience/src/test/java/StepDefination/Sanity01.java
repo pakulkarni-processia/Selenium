@@ -1130,7 +1130,9 @@ content = new COpropertiespage(driver);
 		
 			home.accesstopprofilemenu("topbar-menu-dd responsive-dropdown-menu profile",menu);
 			Thread.sleep(1000);
-			driver.close();
+			System.out.println("Signed Out successfully");
+			//driver.close();
+			//System.out.println("Browser Closed");
 	}
 
 	
