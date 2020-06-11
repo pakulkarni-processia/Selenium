@@ -658,7 +658,8 @@ public class Sanity01 {
 	    //throw new PendingException();
 		capage = new CApropertiespage(driver);
 		statusreport = new ReportFunctions(driver);
-		
+		capage.switchtodefault();
+		Thread.sleep(1000);
 		capage.switchframespropertiespage();
 		
 		String castate = capage.getcastate();
@@ -672,6 +673,7 @@ public class Sanity01 {
 			System.out.println("CA promote failed");
 			statusreport.screenshot("CA promote to Inwork state Failed.jpg");
 		}
+		capage.switchtodefault();
 	}
 
 	
@@ -682,6 +684,7 @@ public class Sanity01 {
 		
 		cacontent = new CAContentPage(driver);
 		Thread.sleep(2000);
+		
 		cacontent.switchframescontentpage();
 		cacontent.selectallparts();
 	}
@@ -1034,15 +1037,15 @@ public class Sanity01 {
 	   // throw new PendingException();
 		
 		home = new HomePage(driver);
-		
+		driver.switchTo().defaultContent();
 		 home.clickrefreshbutton();
-		    Thread.sleep(5000);
+		    Thread.sleep(8000);
 		    
 		    content = new COpropertiespage(driver);
 			statusreport = new ReportFunctions(driver);
 			
 			
-			driver.switchTo().defaultContent();
+			//driver.switchTo().defaultContent();
 			Thread.sleep(2000);
 			content.switchframeonpropertiespage();
 			
@@ -1111,6 +1114,7 @@ content = new COpropertiespage(driver);
 			statusreport.screenshot("CA promote to Complete state Failed.jpg");
 		}
 		
+		driver.switchTo().defaultContent();
 		
 	}
 	
@@ -1120,14 +1124,13 @@ content = new COpropertiespage(driver);
 	   // throw new PendingException();
 		home = new HomePage(driver);
 		
-		
 		home.accesstopmenubar("profile", "alt");
 		
 		String menu = "Sign Out";
 		
 			home.accesstopprofilemenu("topbar-menu-dd responsive-dropdown-menu profile",menu);
 			Thread.sleep(1000);
-		driver.quit();
+			driver.close();
 	}
 
 	

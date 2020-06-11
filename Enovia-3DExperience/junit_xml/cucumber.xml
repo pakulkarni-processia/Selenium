@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite failures="9" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="10" time="81.215747">
-<testcase classname="Validate creation of EBOM and Release of all parts" name="Login to 3DExperience for all users" time="81.196816">
+<testsuite failures="1" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="10" time="387.73511">
+<testcase classname="Validate creation of EBOM and Release of all parts" name="Login to 3DExperience for all users" time="82.30686">
 <system-out><![CDATA[Given Experience url is Open................................................passed
 When experience logo is displayed...........................................passed
 And Enter credentials in "admin_platform" and "enoviaV6" and click on Login button.passed
@@ -9,212 +9,84 @@ And Click on Profile logo and update Credentials............................pass
 And Verify Credentials are updated for user.................................passed
 ]]></system-out>
 </testcase>
-<testcase classname="Validate creation of EBOM and Release of all parts" name="Create New Part" time="0.002346">
-<failure message="org.openqa.selenium.NoSuchSessionException: Session ID is null. Using WebDriver after calling quit()?&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'IN-LP-110', ip: '169.254.11.205', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_251'&#10;Driver info: driver.version: RemoteWebDriver&#13;&#10;&#9;at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:125)&#13;&#10;&#9;at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver.findElements(RemoteWebDriver.java:353)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver.findElementsByCssSelector(RemoteWebDriver.java:424)&#13;&#10;&#9;at org.openqa.selenium.By$ByCssSelector.findElements(By.java:441)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver.findElements(RemoteWebDriver.java:311)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver$RemoteTargetLocator.frame(RemoteWebDriver.java:878)&#13;&#10;&#9;at PageObjects.HomePage.hidepanel(HomePage.java:73)&#13;&#10;&#9;at StepDefination.Sanity01.user_login_to_DExperience(Sanity01.java:208)&#13;&#10;&#9;at ✽.Given User login to 3DExperience(./Features/Sanity01-ReleaseEBOM-Newpart.Feature:14)&#13;&#10;"><![CDATA[Given User login to 3DExperience............................................failed
-When Click on Add button and Navigate to Engineering, Part, Create Part.....skipped
-And Enter details in Mandatory fields on create Part page...................skipped
-And Click on Ok button......................................................skipped
-Then Verify Part is Created successfully....................................skipped
-
-StackTrace:
-org.openqa.selenium.NoSuchSessionException: Session ID is null. Using WebDriver after calling quit()?
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'IN-LP-110', ip: '169.254.11.205', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_251'
-Driver info: driver.version: RemoteWebDriver
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:125)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElements(RemoteWebDriver.java:353)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementsByCssSelector(RemoteWebDriver.java:424)
-	at org.openqa.selenium.By$ByCssSelector.findElements(By.java:441)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElements(RemoteWebDriver.java:311)
-	at org.openqa.selenium.remote.RemoteWebDriver$RemoteTargetLocator.frame(RemoteWebDriver.java:878)
-	at PageObjects.HomePage.hidepanel(HomePage.java:73)
-	at StepDefination.Sanity01.user_login_to_DExperience(Sanity01.java:208)
-	at ✽.Given User login to 3DExperience(./Features/Sanity01-ReleaseEBOM-Newpart.Feature:14)
-]]></failure>
+<testcase classname="Validate creation of EBOM and Release of all parts" name="Create New Part" time="41.712763">
+<system-out><![CDATA[Given User login to 3DExperience............................................passed
+When Click on Add button and Navigate to Engineering, Part, Create Part.....passed
+And Enter details in Mandatory fields on create Part page...................passed
+And Click on Ok button......................................................passed
+Then Verify Part is Created successfully....................................passed
+]]></system-out>
 </testcase>
-<testcase classname="Validate creation of EBOM and Release of all parts" name="Insert as child, New Part" time="0.00261">
-<failure message="org.openqa.selenium.NoSuchSessionException: Session ID is null. Using WebDriver after calling quit()?&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'IN-LP-110', ip: '169.254.11.205', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_251'&#10;Driver info: driver.version: RemoteWebDriver&#13;&#10;&#9;at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:125)&#13;&#10;&#9;at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)&#13;&#10;&#9;at org.openqa.selenium.By$ByXPath.findElement(By.java:353)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)&#13;&#10;&#9;at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)&#13;&#10;&#9;at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)&#13;&#10;&#9;at com.sun.proxy.$Proxy18.isDisplayed(Unknown Source)&#13;&#10;&#9;at PageObjects.PartEBOMPage.visibilityofpartpropertypage(PartEBOMPage.java:63)&#13;&#10;&#9;at StepDefination.Sanity01.parent_part_is_created_and_properties_page_is_open(Sanity01.java:286)&#13;&#10;&#9;at ✽.Given Parent part is created and properties page is open(./Features/Sanity01-ReleaseEBOM-Newpart.Feature:24)&#13;&#10;"><![CDATA[Given Parent part is created and properties page is open....................failed
-And navigate to categories EBOM.............................................skipped
-And click on Insert Part Button, Insert as child New part...................skipped
-And enter details in mandatory fields.......................................skipped
-And click on OK button......................................................skipped
-Then verify part is created successfully under parent part..................skipped
-
-StackTrace:
-org.openqa.selenium.NoSuchSessionException: Session ID is null. Using WebDriver after calling quit()?
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'IN-LP-110', ip: '169.254.11.205', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_251'
-Driver info: driver.version: RemoteWebDriver
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:125)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
-	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
-	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-	at com.sun.proxy.$Proxy18.isDisplayed(Unknown Source)
-	at PageObjects.PartEBOMPage.visibilityofpartpropertypage(PartEBOMPage.java:63)
-	at StepDefination.Sanity01.parent_part_is_created_and_properties_page_is_open(Sanity01.java:286)
-	at ✽.Given Parent part is created and properties page is open(./Features/Sanity01-ReleaseEBOM-Newpart.Feature:24)
-]]></failure>
+<testcase classname="Validate creation of EBOM and Release of all parts" name="Insert as child, New Part" time="41.559171">
+<system-out><![CDATA[Given Parent part is created and properties page is open....................passed
+And navigate to categories EBOM.............................................passed
+And click on Insert Part Button, Insert as child New part...................passed
+And enter details in mandatory fields.......................................passed
+And click on OK button......................................................passed
+Then verify part is created successfully under parent part..................passed
+]]></system-out>
 </testcase>
-<testcase classname="Validate creation of EBOM and Release of all parts" name="Create Change Order" time="0.001628">
-<failure message="org.openqa.selenium.NoSuchSessionException: Session ID is null. Using WebDriver after calling quit()?&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'IN-LP-110', ip: '169.254.11.205', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_251'&#10;Driver info: driver.version: RemoteWebDriver&#13;&#10;&#9;at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:125)&#13;&#10;&#9;at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)&#13;&#10;&#9;at org.openqa.selenium.By$ByXPath.findElement(By.java:353)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)&#13;&#10;&#9;at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)&#13;&#10;&#9;at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)&#13;&#10;&#9;at com.sun.proxy.$Proxy18.click(Unknown Source)&#13;&#10;&#9;at PageObjects.PartEBOMPage.clickcheckboxtoenterchildpart(PartEBOMPage.java:140)&#13;&#10;&#9;at StepDefination.Sanity01.select_all_part_checkbox_click_on_Change_Change_Order_Add_To_New(Sanity01.java:410)&#13;&#10;&#9;at ✽.When select all part checkbox, click on Change, Change Order, Add To New(./Features/Sanity01-ReleaseEBOM-Newpart.Feature:35)&#13;&#10;"><![CDATA[When select all part checkbox, click on Change, Change Order, Add To New....failed
-And Enter mandatory fields on change order page.............................skipped
-Then navigate to categories Change management...............................skipped
-And Verify Change Order is created successfully.............................skipped
-
-StackTrace:
-org.openqa.selenium.NoSuchSessionException: Session ID is null. Using WebDriver after calling quit()?
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'IN-LP-110', ip: '169.254.11.205', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_251'
-Driver info: driver.version: RemoteWebDriver
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:125)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
-	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
-	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-	at com.sun.proxy.$Proxy18.click(Unknown Source)
-	at PageObjects.PartEBOMPage.clickcheckboxtoenterchildpart(PartEBOMPage.java:140)
-	at StepDefination.Sanity01.select_all_part_checkbox_click_on_Change_Change_Order_Add_To_New(Sanity01.java:410)
-	at ✽.When select all part checkbox, click on Change, Change Order, Add To New(./Features/Sanity01-ReleaseEBOM-Newpart.Feature:35)
-]]></failure>
+<testcase classname="Validate creation of EBOM and Release of all parts" name="Create Change Order" time="19.911328">
+<system-out><![CDATA[When select all part checkbox, click on Change, Change Order, Add To New....passed
+And Enter mandatory fields on change order page.............................passed
+Then navigate to categories Change management...............................passed
+And Verify Change Order is created successfully.............................passed
+]]></system-out>
 </testcase>
-<testcase classname="Validate creation of EBOM and Release of all parts" name="Open Change Order" time="0.002617">
-<failure message="org.openqa.selenium.NoSuchSessionException: Session ID is null. Using WebDriver after calling quit()?&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'IN-LP-110', ip: '169.254.11.205', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_251'&#10;Driver info: driver.version: RemoteWebDriver&#13;&#10;&#9;at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:125)&#13;&#10;&#9;at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)&#13;&#10;&#9;at org.openqa.selenium.By$ByXPath.findElement(By.java:353)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)&#13;&#10;&#9;at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)&#13;&#10;&#9;at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)&#13;&#10;&#9;at com.sun.proxy.$Proxy18.click(Unknown Source)&#13;&#10;&#9;at PageObjects.Partchangemanagementpage.openco(Partchangemanagementpage.java:59)&#13;&#10;&#9;at StepDefination.Sanity01.click_on_Change_order_name(Sanity01.java:478)&#13;&#10;&#9;at ✽.When click on Change order name(./Features/Sanity01-ReleaseEBOM-Newpart.Feature:45)&#13;&#10;"><![CDATA[When click on Change order name.............................................failed
-And navigate to categories, CO name.........................................skipped
-And click on Edit and added Approver List...................................skipped
-And Click on Done button....................................................skipped
-And Promote CO to In Work state.............................................skipped
-
-StackTrace:
-org.openqa.selenium.NoSuchSessionException: Session ID is null. Using WebDriver after calling quit()?
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'IN-LP-110', ip: '169.254.11.205', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_251'
-Driver info: driver.version: RemoteWebDriver
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:125)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
-	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
-	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-	at com.sun.proxy.$Proxy18.click(Unknown Source)
-	at PageObjects.Partchangemanagementpage.openco(Partchangemanagementpage.java:59)
-	at StepDefination.Sanity01.click_on_Change_order_name(Sanity01.java:478)
-	at ✽.When click on Change order name(./Features/Sanity01-ReleaseEBOM-Newpart.Feature:45)
-]]></failure>
+<testcase classname="Validate creation of EBOM and Release of all parts" name="Open Change Order" time="19.012504">
+<system-out><![CDATA[When click on Change order name.............................................passed
+And navigate to categories, CO name.........................................passed
+And click on Edit and added Approver List...................................passed
+And Click on Done button....................................................passed
+And Promote CO to In Work state.............................................passed
+]]></system-out>
 </testcase>
-<testcase classname="Validate creation of EBOM and Release of all parts" name="Open Change Action" time="0.002421">
-<failure message="org.openqa.selenium.NoSuchSessionException: Session ID is null. Using WebDriver after calling quit()?&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'IN-LP-110', ip: '169.254.11.205', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_251'&#10;Driver info: driver.version: RemoteWebDriver&#13;&#10;&#9;at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:125)&#13;&#10;&#9;at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver$RemoteTargetLocator.defaultContent(RemoteWebDriver.java:922)&#13;&#10;&#9;at StepDefination.Sanity01.navigate_to_Categories_Content(Sanity01.java:579)&#13;&#10;&#9;at ✽.When navigate to Categories, Content(./Features/Sanity01-ReleaseEBOM-Newpart.Feature:57)&#13;&#10;"><![CDATA[When navigate to Categories, Content........................................failed
-And click on CA name under Related Change Action............................skipped
-And navigate to categories , CA Name........................................skipped
-And click on Edit and add reviewer..........................................skipped
-And Click on Done...........................................................skipped
-And Promote CA to In work state.............................................skipped
-Then validate CA is promoted to Inwork state................................skipped
-
-StackTrace:
-org.openqa.selenium.NoSuchSessionException: Session ID is null. Using WebDriver after calling quit()?
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'IN-LP-110', ip: '169.254.11.205', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_251'
-Driver info: driver.version: RemoteWebDriver
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:125)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at org.openqa.selenium.remote.RemoteWebDriver$RemoteTargetLocator.defaultContent(RemoteWebDriver.java:922)
-	at StepDefination.Sanity01.navigate_to_Categories_Content(Sanity01.java:579)
-	at ✽.When navigate to Categories, Content(./Features/Sanity01-ReleaseEBOM-Newpart.Feature:57)
-]]></failure>
+<testcase classname="Validate creation of EBOM and Release of all parts" name="Open Change Action" time="41.616138">
+<system-out><![CDATA[When navigate to Categories, Content........................................passed
+And click on CA name under Related Change Action............................passed
+And navigate to categories , CA Name........................................passed
+And click on Edit and add reviewer..........................................passed
+And Click on Done...........................................................passed
+And Promote CA to In work state.............................................passed
+Then validate CA is promoted to Inwork state................................passed
+]]></system-out>
 </testcase>
-<testcase classname="Validate creation of EBOM and Release of all parts" name="Promote BOM- Mass Promote" time="0.001901">
-<failure message="org.openqa.selenium.NoSuchSessionException: Session ID is null. Using WebDriver after calling quit()?&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'IN-LP-110', ip: '169.254.11.205', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_251'&#10;Driver info: driver.version: RemoteWebDriver&#13;&#10;&#9;at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:125)&#13;&#10;&#9;at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver$RemoteTargetLocator.defaultContent(RemoteWebDriver.java:922)&#13;&#10;&#9;at StepDefination.Sanity01.navigate_to_Categories_Content(Sanity01.java:579)&#13;&#10;&#9;at ✽.When navigate to Categories, Content(./Features/Sanity01-ReleaseEBOM-Newpart.Feature:68)&#13;&#10;"><![CDATA[When navigate to Categories, Content........................................failed
-And Select all parts check box..............................................skipped
-And Click Tools- Mass Promote...............................................skipped
-And Close - Success message displayed.......................................skipped
-
-StackTrace:
-org.openqa.selenium.NoSuchSessionException: Session ID is null. Using WebDriver after calling quit()?
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'IN-LP-110', ip: '169.254.11.205', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_251'
-Driver info: driver.version: RemoteWebDriver
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:125)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at org.openqa.selenium.remote.RemoteWebDriver$RemoteTargetLocator.defaultContent(RemoteWebDriver.java:922)
-	at StepDefination.Sanity01.navigate_to_Categories_Content(Sanity01.java:579)
-	at ✽.When navigate to Categories, Content(./Features/Sanity01-ReleaseEBOM-Newpart.Feature:68)
-]]></failure>
+<testcase classname="Validate creation of EBOM and Release of all parts" name="Promote BOM- Mass Promote" time="11.330383">
+<system-out><![CDATA[When navigate to Categories, Content........................................passed
+And Select all parts check box..............................................passed
+And Click Tools- Mass Promote...............................................passed
+And Close - Success message displayed.......................................passed
+]]></system-out>
 </testcase>
-<testcase classname="Validate creation of EBOM and Release of all parts" name="Promote CA And approve route" time="0.002358">
-<failure message="org.openqa.selenium.NoSuchSessionException: Session ID is null. Using WebDriver after calling quit()?&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'IN-LP-110', ip: '169.254.11.205', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_251'&#10;Driver info: driver.version: RemoteWebDriver&#13;&#10;&#9;at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:125)&#13;&#10;&#9;at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver$RemoteTargetLocator.defaultContent(RemoteWebDriver.java:922)&#13;&#10;&#9;at StepDefination.Sanity01.Navigate_to_CA_properties_page(Sanity01.java:723)&#13;&#10;&#9;at ✽.Given Navigate to CA properties page(./Features/Sanity01-ReleaseEBOM-Newpart.Feature:76)&#13;&#10;"><![CDATA[Given Navigate to CA properties page........................................failed
-And Click on Promote........................................................skipped
-Then verify CA is promoted to In Approval state.............................skipped
-When navigate to Messages (Icon)............................................skipped
-And Click on New Task Assignment Notice.....................................skipped
-And Click on Inbox Task IT-XXX no...........................................skipped
-And Click on Approve button from tool bar...................................skipped
-And enter comments and click on Approve button..............................skipped
-And Close the window and refresh CA page....................................skipped
-Then verify CA is promoted to Approved state................................skipped
-
-StackTrace:
-org.openqa.selenium.NoSuchSessionException: Session ID is null. Using WebDriver after calling quit()?
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'IN-LP-110', ip: '169.254.11.205', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_251'
-Driver info: driver.version: RemoteWebDriver
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:125)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at org.openqa.selenium.remote.RemoteWebDriver$RemoteTargetLocator.defaultContent(RemoteWebDriver.java:922)
-	at StepDefination.Sanity01.Navigate_to_CA_properties_page(Sanity01.java:723)
-	at ✽.Given Navigate to CA properties page(./Features/Sanity01-ReleaseEBOM-Newpart.Feature:76)
-]]></failure>
+<testcase classname="Validate creation of EBOM and Release of all parts" name="Promote CA And approve route" time="59.328901">
+<system-out><![CDATA[Given Navigate to CA properties page........................................passed
+And Click on Promote........................................................passed
+Then verify CA is promoted to In Approval state.............................passed
+When navigate to Messages (Icon)............................................passed
+And Click on New Task Assignment Notice.....................................passed
+And Click on Inbox Task IT-XXX no...........................................passed
+And Click on Approve button from tool bar...................................passed
+And enter comments and click on Approve button..............................passed
+And Close the window and refresh CA page....................................passed
+Then verify CA is promoted to Approved state................................passed
+]]></system-out>
 </testcase>
-<testcase classname="Validate creation of EBOM and Release of all parts" name="Promote CO to complete state" time="0.001436">
-<failure message="org.openqa.selenium.NoSuchSessionException: Session ID is null. Using WebDriver after calling quit()?&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'IN-LP-110', ip: '169.254.11.205', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_251'&#10;Driver info: driver.version: RemoteWebDriver&#13;&#10;&#9;at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:125)&#13;&#10;&#9;at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)&#13;&#10;&#9;at org.openqa.selenium.By$ByXPath.findElement(By.java:353)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)&#13;&#10;&#9;at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)&#13;&#10;&#9;at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)&#13;&#10;&#9;at com.sun.proxy.$Proxy18.click(Unknown Source)&#13;&#10;&#9;at PageObjects.CApropertiespage.clickconumber(CApropertiespage.java:165)&#13;&#10;&#9;at StepDefination.Sanity01.click_on_CO_name_from_CA_properties_page(Sanity01.java:927)&#13;&#10;&#9;at ✽.And click on CO name from CA properties page(./Features/Sanity01-ReleaseEBOM-Newpart.Feature:92)&#13;&#10;"><![CDATA[And click on CO name from CA properties page................................failed
-Then verify CO page is open.................................................skipped
-And click on CO name from Categories, Properties page display...............skipped
-And Click on Approvals then click on task ID................................skipped
-And click on Approve from tool bar..........................................skipped
-And enter comments, click on Approve........................................skipped
-And close the window........................................................skipped
-Then verify CO is promoted to Complete state Automatically..................skipped
-
-StackTrace:
-org.openqa.selenium.NoSuchSessionException: Session ID is null. Using WebDriver after calling quit()?
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'IN-LP-110', ip: '169.254.11.205', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_251'
-Driver info: driver.version: RemoteWebDriver
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:125)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
-	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
-	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-	at com.sun.proxy.$Proxy18.click(Unknown Source)
-	at PageObjects.CApropertiespage.clickconumber(CApropertiespage.java:165)
-	at StepDefination.Sanity01.click_on_CO_name_from_CA_properties_page(Sanity01.java:927)
-	at ✽.And click on CO name from CA properties page(./Features/Sanity01-ReleaseEBOM-Newpart.Feature:92)
-]]></failure>
+<testcase classname="Validate creation of EBOM and Release of all parts" name="Promote CO to complete state" time="58.54053">
+<system-out><![CDATA[And click on CO name from CA properties page................................passed
+Then verify CO page is open.................................................passed
+And click on CO name from Categories, Properties page display...............passed
+And Click on Approvals then click on task ID................................passed
+And click on Approve from tool bar..........................................passed
+And enter comments, click on Approve........................................passed
+And close the window........................................................passed
+Then verify CO is promoted to Complete state Automatically..................passed
+]]></system-out>
 </testcase>
-<testcase classname="Validate creation of EBOM and Release of all parts" name="CA promoted to complete state" time="0.001614">
-<failure message="org.openqa.selenium.NoSuchSessionException: Session ID is null. Using WebDriver after calling quit()?&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'IN-LP-110', ip: '169.254.11.205', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_251'&#10;Driver info: driver.version: RemoteWebDriver&#13;&#10;&#9;at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:125)&#13;&#10;&#9;at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver$RemoteTargetLocator.defaultContent(RemoteWebDriver.java:922)&#13;&#10;&#9;at StepDefination.Sanity01.navigate_to_categories_content(Sanity01.java:1068)&#13;&#10;&#9;at ✽.And navigate to categories, content(./Features/Sanity01-ReleaseEBOM-Newpart.Feature:106)&#13;&#10;"><![CDATA[And navigate to categories, content.........................................failed
-And click on CA.............................................................skipped
-Then verify CA is promoted to Complete state and part are promoted to Released state..skipped
+<testcase classname="Validate creation of EBOM and Release of all parts" name="CA promoted to complete state" time="12.416532">
+<failure message="org.openqa.selenium.NoSuchSessionException: Session ID is null. Using WebDriver after calling quit()?&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'IN-LP-110', ip: '169.254.11.205', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_251'&#10;Driver info: driver.version: RemoteWebDriver&#13;&#10;&#9;at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:125)&#13;&#10;&#9;at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:609)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver.getScreenshotAs(RemoteWebDriver.java:295)&#13;&#10;&#9;at StepDefination.Sanity01.scenariostatus(Sanity01.java:1147)&#13;&#10;&#9;at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#13;&#10;&#9;at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)&#13;&#10;&#9;at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)&#13;&#10;&#9;at java.lang.reflect.Method.invoke(Unknown Source)&#13;&#10;&#9;at cucumber.runtime.Utils$1.call(Utils.java:40)&#13;&#10;&#9;at cucumber.runtime.Timeout.timeout(Timeout.java:16)&#13;&#10;&#9;at cucumber.runtime.Utils.invoke(Utils.java:34)&#13;&#10;&#9;at cucumber.runtime.java.JavaHookDefinition.execute(JavaHookDefinition.java:60)&#13;&#10;&#9;at cucumber.runtime.Runtime.runHookIfTagsMatch(Runtime.java:224)&#13;&#10;&#9;at cucumber.runtime.Runtime.runHooks(Runtime.java:212)&#13;&#10;&#9;at cucumber.runtime.Runtime.runAfterHooks(Runtime.java:206)&#13;&#10;&#9;at cucumber.runtime.model.CucumberScenario.run(CucumberScenario.java:46)&#13;&#10;&#9;at cucumber.runtime.junit.ExecutionUnitRunner.run(ExecutionUnitRunner.java:102)&#13;&#10;&#9;at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:63)&#13;&#10;&#9;at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:18)&#13;&#10;&#9;at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)&#13;&#10;&#9;at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)&#13;&#10;&#9;at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)&#13;&#10;&#9;at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)&#13;&#10;&#9;at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)&#13;&#10;&#9;at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)&#13;&#10;&#9;at org.junit.runners.ParentRunner.run(ParentRunner.java:413)&#13;&#10;&#9;at cucumber.runtime.junit.FeatureRunner.run(FeatureRunner.java:70)&#13;&#10;&#9;at cucumber.api.junit.Cucumber.runChild(Cucumber.java:95)&#13;&#10;&#9;at cucumber.api.junit.Cucumber.runChild(Cucumber.java:38)&#13;&#10;&#9;at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)&#13;&#10;&#9;at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)&#13;&#10;&#9;at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)&#13;&#10;&#9;at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)&#13;&#10;&#9;at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)&#13;&#10;&#9;at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)&#13;&#10;&#9;at org.junit.runners.ParentRunner.run(ParentRunner.java:413)&#13;&#10;&#9;at cucumber.api.junit.Cucumber.run(Cucumber.java:100)&#13;&#10;&#9;at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)&#13;&#10;&#9;at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)&#13;&#10;&#9;at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)&#13;&#10;&#9;at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)&#13;&#10;&#9;at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:377)&#13;&#10;&#9;at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:138)&#13;&#10;&#9;at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:465)&#13;&#10;&#9;at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:451)&#13;&#10;"><![CDATA[And navigate to categories, content.........................................passed
+And click on CA.............................................................passed
+Then verify CA is promoted to Complete state and part are promoted to Released state..passed
+And Signout and close window................................................passed
 
 StackTrace:
 org.openqa.selenium.NoSuchSessionException: Session ID is null. Using WebDriver after calling quit()?
@@ -224,9 +96,50 @@ Driver info: driver.version: RemoteWebDriver
 	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:125)
 	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
 	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at org.openqa.selenium.remote.RemoteWebDriver$RemoteTargetLocator.defaultContent(RemoteWebDriver.java:922)
-	at StepDefination.Sanity01.navigate_to_categories_content(Sanity01.java:1068)
-	at ✽.And navigate to categories, content(./Features/Sanity01-ReleaseEBOM-Newpart.Feature:106)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:609)
+	at org.openqa.selenium.remote.RemoteWebDriver.getScreenshotAs(RemoteWebDriver.java:295)
+	at StepDefination.Sanity01.scenariostatus(Sanity01.java:1147)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at cucumber.runtime.Utils$1.call(Utils.java:40)
+	at cucumber.runtime.Timeout.timeout(Timeout.java:16)
+	at cucumber.runtime.Utils.invoke(Utils.java:34)
+	at cucumber.runtime.java.JavaHookDefinition.execute(JavaHookDefinition.java:60)
+	at cucumber.runtime.Runtime.runHookIfTagsMatch(Runtime.java:224)
+	at cucumber.runtime.Runtime.runHooks(Runtime.java:212)
+	at cucumber.runtime.Runtime.runAfterHooks(Runtime.java:206)
+	at cucumber.runtime.model.CucumberScenario.run(CucumberScenario.java:46)
+	at cucumber.runtime.junit.ExecutionUnitRunner.run(ExecutionUnitRunner.java:102)
+	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:63)
+	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:18)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at cucumber.runtime.junit.FeatureRunner.run(FeatureRunner.java:70)
+	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:95)
+	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:38)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at cucumber.api.junit.Cucumber.run(Cucumber.java:100)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:377)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:138)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:465)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:451)
 ]]></failure>
 </testcase>
 </testsuite>
