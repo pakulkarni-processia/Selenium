@@ -51,7 +51,7 @@
                             <outputDirectory>${project.build.directory}/Cucumber-Report</outputDirectory>
                            	<inputDirectory>${project.build.directory}</inputDirectory>
                             <jsonFiles>
-                                supports wildcard or name pattern
+                              <!--  supports wildcard or name pattern-->  
                                 <param>**/*.json</param>
                             </jsonFiles>
                                                
