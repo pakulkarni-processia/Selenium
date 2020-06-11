@@ -1118,6 +1118,16 @@ content = new COpropertiespage(driver);
 	public void signout_and_close_window() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	   // throw new PendingException();
+		home = new HomePage(driver);
+		
+		
+		home.accesstopmenubar("profile", "alt");
+		
+		String menu = "Sign Out";
+		
+			home.accesstopprofilemenu("topbar-menu-dd responsive-dropdown-menu profile",menu);
+			Thread.sleep(1000);
+		driver.quit();
 	}
 
 	
@@ -1133,17 +1143,6 @@ content = new COpropertiespage(driver);
 	{
 		final byte[] screen = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
 		scenario.embed(screen, "image/png");	
-		
-		home = new HomePage(driver);
-		
-		
-		home.accesstopmenubar("profile", "alt");
-		
-		String menu = "Sign Out";
-		
-			home.accesstopprofilemenu("topbar-menu-dd responsive-dropdown-menu profile",menu);
-			Thread.sleep(1000);
-		driver.quit();
 	}
 }
 }

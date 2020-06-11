@@ -106,4 +106,4 @@ Scenario: CA promoted to complete state
 And navigate to categories, content
 And click on CA
 Then verify CA is promoted to Complete state and part are promoted to Released state.
-#And Signout and close window
+And Signout and close window
