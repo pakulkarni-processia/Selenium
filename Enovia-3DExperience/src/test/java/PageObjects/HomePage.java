@@ -1,5 +1,6 @@
 package PageObjects;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -26,6 +27,7 @@ public class HomePage {
 	public Set<String> windowhandles;
 	
 	WebDriver driver;
+	WebDriverWait wait;
 	List<WebElement> List;
 	ReportFunctions statusreport;
 	
@@ -50,26 +52,32 @@ public class HomePage {
 	@FindBy(xpath="//button[@class='refresh']")
 	WebElement refreshbutton;
 	
-	public String loginsuccess()
+	public void loginsuccess() throws IOException, InterruptedException
 	{
 		statusreport = new ReportFunctions(driver);
 		
 		if(topbarmenu.isDisplayed())
 		{
 			statusreport.logger("Topmenu bar displayed");
-			return "True";
+			System.out.println("Login is successful");
+			statusreport.screenshot( "Login Success.jpg" );
+			statusreport.logger("Login success");
+			hidepanel();
+			Thread.sleep(1000);
 		}
 		else 
 		{
 			statusreport.logger("Topmenu bar not displayed");
-			return "False";
+			System.out.println("Login is Failed");
+			statusreport.screenshot("Login Failed.jpg" );
+			statusreport.logger("Login Failed");
 		}
 	}
 	
 	public void hidepanel()
 	{
 		
-		WebDriverWait wait = new WebDriverWait(driver, 60);// 1 minute
+		wait = new WebDriverWait(driver, 60);// 1 minute
 		driver.switchTo().frame("content");
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id ='right']")));
 		

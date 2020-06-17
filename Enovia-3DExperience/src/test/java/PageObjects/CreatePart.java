@@ -11,6 +11,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import StepDefination.ReadExcel;
+import StepDefination.ReportFunctions;
+
 public class CreatePart {
 
 	WebDriver driver;
@@ -129,4 +132,13 @@ public class CreatePart {
 		driver.findElement(By.cssSelector(".btn-primary")).click();
 				System.out.println("Ok Button clicked");
 	}
+	
+	public void waitfor()
+	{
+		wait = new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='rightSlideIn']")));
+		System.out.println("Right panel found");
+	}
+	
+	
 }

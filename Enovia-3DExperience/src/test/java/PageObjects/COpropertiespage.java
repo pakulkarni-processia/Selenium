@@ -1,5 +1,7 @@
 package PageObjects;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -147,12 +149,21 @@ public class COpropertiespage {
 		statusreport.logger("Frame switched");
 	}
 	
-	public String getcostate()
+	public void getcostate(String costate) throws IOException
 	{
 		statusreport = new ReportFunctions(driver);
-		String costate = state.getText();
+		String actualcostate = state.getText();
 		statusreport.logger(costate);
-		return costate;
+		if (actualcostate.equalsIgnoreCase(costate))
+		{
+			System.out.println("CO Promoted to: "+actualcostate+" state successfully");
+			statusreport.screenshot("CO promoted to :"+actualcostate+"state.jpg");
+		}
+		else
+		{
+			System.out.println("CO promote failed");
+			statusreport.screenshot("CO promote Failed.jpg");
+		}
 	}
 	
 	public void clickcontent() throws InterruptedException

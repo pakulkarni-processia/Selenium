@@ -1,5 +1,6 @@
 package PageObjects;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -10,10 +11,15 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import StepDefination.ReadExcel;
+import StepDefination.ReportFunctions;
+
 public class PartEBOMPage {
 
-	
+	ReportFunctions statusreport;
+	ReadExcel excel;
 	WebDriver driver;
+	WebDriverWait wait;
 	List<WebElement> List;
 	
 	public  PartEBOMPage(WebDriver newdriver)
@@ -58,28 +64,29 @@ public class PartEBOMPage {
 	@FindBy(xpath="/html/body/div[5]/div/div[2]/div[2]/ul/li[2]/a/label")
 	WebElement newchangeorder;
 	
-	public String visibilityofpartpropertypage()
+	public void  visibilityofpartpropertypage()
 	{
+		statusreport = new ReportFunctions(driver);
 		if(pagehead.isDisplayed())
 		{
-			return "True";
+			statusreport.logger("Part Properties page is open");
 		}
 		else 
 		{
-			return "False";
+			statusreport.logger("Part Properties page is not open");
 		}
 	}
 	
-	public String visibilityofebompage()
+	public void visibilityofebompage()
 	{
 		
 		if(pencilicon.isDisplayed())
 		{
-			return "True";
+			statusreport.logger("EBOM Properties page is open");
 		}
 		else 
 		{
-			return "False";
+			statusreport.logger("EBOM Properties page is not open");
 		}
 	}
 	
@@ -126,49 +133,60 @@ public class PartEBOMPage {
 	
 	public void ebom()
 	{
+		statusreport = new ReportFunctions(driver);
 		ebom.click();
+		statusreport.logger("clicked on BOM link");
 	}
 	
 	public void clickonediticon()
 	{
-				
+		statusreport = new ReportFunctions(driver);		
 		pencilicon.click();
-		System.out.println("Clicked on Pensil icon");
+		statusreport.logger("Clicked on Pensil icon");
 	}
 	public void clickcheckboxtoenterchildpart() throws InterruptedException
 	{
+		statusreport = new ReportFunctions(driver);
 		partcheckbox.click();
 		Thread.sleep(1000);
 		
-		System.out.println("Clicked on child checkbox");
+		statusreport.logger("Clicked on child checkbox");
 	}
 	
 	public void clickonInsertparticon()
 	{
+		statusreport = new ReportFunctions(driver);
 		insertparticon.click();
-		System.out.println("Clicked on Insert Part icon");
+		statusreport.logger("Clicked on Insert Part icon");
 	}
 	
 	
 	public void selectinsertpart()
 	{
+		statusreport = new ReportFunctions(driver);
 		Inserparttext.click();
-		System.out.println("Clicked on Insert Part text from menu");
+		statusreport.logger("Clicked on Insert Part text from menu");
 	}
 	
-	public String visibilityofchildpart()
+	public void visibilityofchildpart() throws IOException, InterruptedException
 	{
+		statusreport = new ReportFunctions(driver);
 		if(firstchildpart.isDisplayed())
 		{
-			System.out.println("Child Part Created");
+			statusreport.logger("Child Part Created");
 			String childpartno = firstchildpart.getText();
-			return childpartno;
+			
+			excel.writeexcel("PartDetails",childpartno,2); 
+			//driver.switchTo().defaultContent();
+			Thread.sleep(2000);
+			statusreport.screenshot( "Childpart inserted success.jpg");
 			
 		}
 		else
 		{
-			System.out.println("Child Part Creation Failed");
-			return "False";
+			statusreport.logger("Child Part Creation Failed");
+			System.out.println("Child Part Create Failed");
+			statusreport.screenshot( "Child Part Create Failed.jpg");
 		}
 		
 	}
@@ -180,33 +198,77 @@ public class PartEBOMPage {
 	
 	public void ENCBOMframe()
 	{
+		statusreport = new ReportFunctions(driver);
 		driver.switchTo().frame("content");
 		driver.switchTo().frame("detailsDisplay");
 		driver.switchTo().frame("portalDisplay");
 		driver.switchTo().frame("ENCBOM");
+		statusreport.logger("Frame Switched");
 	}
 	
 	public void clickdisplaymodeicon()
 	{
+		statusreport = new ReportFunctions(driver);
 		displaymodeicon.click();
-		System.out.println("display mode icon is clicked");
+		statusreport.logger("display mode icon is clicked");
 	}
 	
 	public void selecttableview()
 	{
+		statusreport = new ReportFunctions(driver);
 		tableoption.click();
-		System.out.println("Table view option is selected");
+		statusreport.logger("Table view option is selected");
 	}
 	
 	public void clickonchangeicon()
 	{
+		statusreport = new ReportFunctions(driver);
 		changeicon.click();
-		System.out.println("Chnage icon is clicked");
+		statusreport.logger("Chnage icon is clicked");
 	}
 	
 	public void clicknewchangeorder()
 	{
+		statusreport = new ReportFunctions(driver);
 		newchangeorder.click();
-		System.out.println("new change order is clicked");
+		statusreport.logger("new change order is clicked");
+	}
+	
+	public void createpartstatus() throws IOException
+	{
+		statusreport = new ReportFunctions(driver);
+		excel = new ReadExcel();
+		
+		
+		String Partnumber = partnumber();
+		
+		if(Partnumber!=null)
+		{
+			excel.writeexcel("PartDetails",Partnumber,1); 
+					
+			System.out.println("Part is created successfully");
+			statusreport.screenshot( "Part created successfully.jpg" );
+			statusreport.logger("Part created successfully");
+		}
+		else
+		{
+			System.out.println("Part creation failed");
+			statusreport.screenshot( "Part creation failed.jpg" );
+			statusreport.logger("Part creation failed");	
+		}
+	}
+	
+	public void switchtodefault()
+	{
+		driver.switchTo().defaultContent();
+	}
+	
+	public void waitforrightpanel()
+	{
+		statusreport = new ReportFunctions(driver);
+		
+		wait = new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='rightSlideIn']")));
+		statusreport.logger("Right panel found");
 	}
 }

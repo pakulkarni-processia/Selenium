@@ -82,12 +82,20 @@ public class Taskapprovalpage {
 		statusreport.logger("Approved button clicked");
 	}
 	
-	public String checkapprovalstatus()
+	public void checkapprovalstatus(String status)
 	{
 		statusreport = new ReportFunctions(driver);
-		String status = Approvalstatus.getText();
+		String actualstatus = Approvalstatus.getText();
 		statusreport.logger("Approval status is:"+status);
-		return status;
+		if (actualstatus.equals(status))
+		{
+			statusreport.logger("Status is "+actualstatus);
+		}
+		else
+		{
+			statusreport.logger("Status is not"+actualstatus);
+		}	
+			
 		
 	}
 	
@@ -103,7 +111,7 @@ public class Taskapprovalpage {
 		Thread.sleep(2000);
 		switchtodefault();
 		switchframeonapprovalpage();
-		checkapprovalstatus();
+		//checkapprovalstatus();
 		
 	}
 

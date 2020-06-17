@@ -210,16 +210,7 @@ public class Notificationandapprovalpage {
 		Thread.sleep(1000);
 		task.switchframeonapprovalpage();
 		
-		String status = task.checkapprovalstatus();
-		
-		if (status.equals("Approved "))
-		{
-			statusreport.logger("Status is Approved");
-		}
-		else
-		{
-			statusreport.logger("Status is not Approved");
-		}	
+		task.checkapprovalstatus("Approved ");
 		
 		driver.close();
 		driver.switchTo().window(maildetailswindow);

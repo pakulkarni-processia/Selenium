@@ -39,8 +39,8 @@ import PageObjects.Taskapprovalpage;
 public class Sanity01 {
 
 	static WebDriver driver;
-	public WebDriverWait wait;
-	public List<WebElement> List;
+	public static WebDriverWait wait;
+	public static List<WebElement> List;
 	
 	public Login log;
 	public SetCredentials setcreds;
@@ -88,13 +88,7 @@ public class Sanity01 {
 		log = new Login(driver);
 		statusreport = new ReportFunctions(driver);
 		
-		String ExpTitle = "3DPassport - Login";
-		String title = log.gettitle();
-		System.out.println(title);
-				Assert.assertEquals(ExpTitle, title);
-		//statusreport.screenshot(driver, "logo.jpg");
-		System.out.println("Login page is displayed");
-		statusreport.logger("Login Page is Displayed");
+		log.checkforlogo();
 	}
 
 
@@ -106,8 +100,7 @@ public class Sanity01 {
 		statusreport = new ReportFunctions(driver);
 		log = new Login(driver);
 		
-		wait = new WebDriverWait(driver,60);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("username")));
+		log.waitfor();
 		
 		log.setusername(username);
 		log.setpassword(password);
@@ -116,11 +109,11 @@ public class Sanity01 {
 		
 		log.clicklogin();
 		
-		System.out.println("Wait Time Started");
+		statusreport.logger("Wait Time Started");
 		Thread.sleep(40000);
 			    //throw new PendingException();
 		driver.manage().timeouts().implicitlyWait(250, TimeUnit.SECONDS);
-		System.out.println("Wait Time Ended");
+		statusreport.logger("Wait Time Ended");
 	   	}
 	
 
@@ -131,26 +124,7 @@ public class Sanity01 {
 		
 		home = new HomePage(driver);
 		
-		String Result = home.loginsuccess();
-		statusreport = new ReportFunctions(driver);
-		
-		if (Result.equals("True"))
-			
-		{
-			System.out.println("Login is successful");
-			statusreport.screenshot( "Login Success.jpg" );
-			statusreport.logger("Login success");
-			home.hidepanel();
-			Thread.sleep(1000);
-		}
-		else
-		{
-			System.out.println("Login is Failed");
-			statusreport.screenshot("Login Failed.jpg" );
-			statusreport.logger("Login Failed");
-		}
-			
-		
+		home.loginsuccess();
 	}
 
 	@Then("^Click on Profile logo and update Credentials$")
@@ -232,8 +206,7 @@ public class Sanity01 {
 	    //throw new PendingException();
 		statusreport = new ReportFunctions(driver);
 		part = new CreatePart(driver);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='rightSlideIn']")));
-		System.out.println("Right panel found");
+		part.waitfor();
 		part.createpart();
 	}
 
@@ -258,22 +231,8 @@ public class Sanity01 {
 		
 		Thread.sleep(20000);
 		
-		String Partnumber = partproperty.partnumber();
+		partproperty.createpartstatus();
 		
-		if(Partnumber!=null)
-		{
-			excel.writeexcel("PartDetails",Partnumber,1); 
-					
-			System.out.println("Part is created successfully");
-			statusreport.screenshot( "Part created successfully.jpg" );
-			statusreport.logger("Part created successfully");
-		}
-		else
-		{
-			System.out.println("Part creation failed");
-			statusreport.screenshot( "Part creation failed.jpg" );
-			statusreport.logger("Part creation failed");	
-		}
 		
 	}
 	
@@ -283,15 +242,8 @@ public class Sanity01 {
 	    //throw new PendingException();
 		partproperty = new PartEBOMPage(driver);
 		
-		String Result = partproperty.visibilityofpartpropertypage();
-		if (Result.equalsIgnoreCase("True"))
-		{
-			System.out.println("Part Properties page is open");
-		}
-		else
-		{
-			System.out.println("Part Properties page is not open");
-		}
+		partproperty.visibilityofpartpropertypage();
+	
 	}
 
 	@Given("^navigate to categories EBOM$")
@@ -306,16 +258,9 @@ public class Sanity01 {
 		Thread.sleep(10000);
 		partproperty.ENCBOMframe();
 		
-		System.out.println("Frame Switched");
-		String Result = partproperty.visibilityofebompage();
-		if (Result.equalsIgnoreCase("True"))
-		{
-			System.out.println("EBOM Properties page is open");
-		}
-		else
-		{
-			System.out.println("EBOM Properties page is not open");
-		}
+		
+		partproperty.visibilityofebompage();
+		
 		
 	}
 	
@@ -327,7 +272,7 @@ public class Sanity01 {
 		
 		partproperty = new PartEBOMPage(driver);
 		
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		//partproperty.clickonediticon();
 		partproperty.clickdisplaymodeicon();
 		partproperty.selecttableview();
@@ -336,12 +281,11 @@ public class Sanity01 {
 		partproperty.clickonInsertparticon();
 		partproperty.selectinsertpart();
 		
-		driver.switchTo().defaultContent();
+		partproperty.switchtodefault();
 		
+				
 		Thread.sleep(1000);
-		wait = new WebDriverWait(driver, 60);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='rightSlideIn']")));
-		System.out.println("Right panel found");
+		
 		
 	}
 
@@ -375,24 +319,8 @@ public class Sanity01 {
 		statusreport = new ReportFunctions(driver);
 		excel = new ReadExcel();
 		partproperty.ENCBOMframe();
-		String Result = partproperty.visibilityofchildpart();
+		partproperty.visibilityofchildpart();
 		
-		
-		
-		if(Result!=null)
-		{
-			System.out.println("Child Part Created successfully");
-			//partproperty.clickonsavebutton();
-			excel.writeexcel("PartDetails",Result,2); 
-			//driver.switchTo().defaultContent();
-			Thread.sleep(2000);
-			statusreport.screenshot( "Childpart inserted success.jpg");
-		}
-		else 
-		{
-			System.out.println("Child Part Create Failed");
-			statusreport.screenshot( "Child Part Create Failed.jpg");
-		}
 	}
 
 	//@Given("^part properties EBOM category page is open$")
@@ -545,17 +473,8 @@ public class Sanity01 {
 		Thread.sleep(2000);
 		content.switchframeonpropertiespage();
 		
-		String costate = content.getcostate();
-		if (costate.equalsIgnoreCase("In Work "))
-		{
-			System.out.println("CO Promoted to: "+costate+" state successfully");
-			statusreport.screenshot("CO promoted to Inwork state.jpg");
-		}
-		else
-		{
-			System.out.println("CO promote failed");
-			statusreport.screenshot("CO promote Failed.jpg");
-		}
+		content.getcostate("In Work ");
+		
 		
 	}
 
@@ -663,17 +582,8 @@ public class Sanity01 {
 		Thread.sleep(1000);
 		capage.switchframespropertiespage();
 		
-		String castate = capage.getcastate();
-		if (castate.equalsIgnoreCase("In Work "))
-		{
-			System.out.println("CA Promoted to: "+castate+" state successfully");
-			statusreport.screenshot( "CA promote to Inwork state success.jpg");
-		}
-		else
-		{
-			System.out.println("CA promote failed");
-			statusreport.screenshot("CA promote to Inwork state Failed.jpg");
-		}
+		capage.getcastate("In Work ");
+		
 		capage.switchtodefault();
 	}
 
@@ -752,17 +662,8 @@ public class Sanity01 {
 		
 		capage.switchframespropertiespage();
 		
-		String castate = capage.getcastate();
-		if (castate.equalsIgnoreCase("In Approval "))
-		{
-			statusreport.logger("CA Promoted to: "+castate+" state successfully");
-			statusreport.screenshot( "CA promote to In Approval state success.jpg");
-		}
-		else
-		{
-			statusreport.logger("CA promote failed");
-			statusreport.screenshot("CA promote to In Approval state Failed.jpg");
-		}
+		capage.getcastate("In Approval ");
+		
 	}
 
 	@When("^navigate to Messages \\(Icon\\)$")
@@ -874,17 +775,8 @@ public class Sanity01 {
 		task = new Taskapprovalpage(driver);
 		home = new HomePage(driver);
 		
-		String status = task.checkapprovalstatus();
+		task.checkapprovalstatus("Approved ");
 		
-		if (status.equals("Approved "))
-		{
-			statusreport.logger("Status is Approved");
-		}
-		else
-		{
-			statusreport.logger("Status is not Approved");
-		}	
-			
 			
 		home.closecurrentwindow();
 		home.closecurrentwindow();
@@ -905,17 +797,7 @@ public class Sanity01 {
 		
 		capage.switchframespropertiespage();
 		
-		String castate = capage.getcastate();
-		if (castate.equalsIgnoreCase("Approved "))
-		{
-			statusreport.logger("CA Promoted to: "+castate+" state successfully");
-			statusreport.screenshot( "CA promote to Approved state success.jpg");
-		}
-		else
-		{
-			statusreport.logger("CA promote failed");
-			statusreport.screenshot("CA promote to Approved state Failed.jpg");
-		}
+		capage.getcastate("Approved ");
 		
 	}
 
@@ -1014,17 +896,9 @@ public class Sanity01 {
 		task = new Taskapprovalpage(driver);
 		task.switchtodefault();
 		task.switchframeonapprovalpage();
-		String status = task.checkapprovalstatus();
+		task.checkapprovalstatus("Approved ");
 		
-		if (status.equals("Approved "))
-		{
-			statusreport.logger("Status is Approved");
-		}
-		else
-		{
-			statusreport.logger("Status is not Approved");
-		}
-		
+			
 		home = new HomePage(driver);
 		
 		home.closecurrentwindow();
@@ -1050,17 +924,8 @@ public class Sanity01 {
 			Thread.sleep(2000);
 			content.switchframeonpropertiespage();
 			
-			String costate = content.getcostate();
-			if (costate.equalsIgnoreCase("Complete "))
-			{
-				System.out.println("CO Promoted to: "+costate+" state successfully");
-				statusreport.screenshot("CO promoted to Complete state.jpg");
-			}
-			else
-			{
-				System.out.println("CO promote failed");
-				statusreport.screenshot("CO promote Failed.jpg");
-			}
+			content.getcostate("Complete ");
+			
 	}
 
 	@Given("^navigate to categories, content$")
@@ -1103,18 +968,8 @@ content = new COpropertiespage(driver);
 		
 		capage.switchframespropertiespage();
 		
-		String castate = capage.getcastate();
-		if (castate.equalsIgnoreCase("Complete "))
-		{
-			statusreport.logger("CA Promoted to: "+castate+" state successfully");
-			statusreport.screenshot( "CA promote to Complete state success.jpg");
-		}
-		else
-		{
-			statusreport.logger("CA promote failed");
-			statusreport.screenshot("CA promote to Complete state Failed.jpg");
-		}
-		
+		capage.getcastate("Complete ");
+				
 		driver.switchTo().defaultContent();
 		
 	}

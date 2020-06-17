@@ -1,5 +1,7 @@
 package PageObjects;
 
+import java.io.IOException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -144,12 +146,22 @@ public class CApropertiespage {
 		statusreport.logger("Frame switched");
 	}
 	
-	public String getcastate()
+	public void getcastate(String castate) throws IOException
 	{
 		statusreport = new ReportFunctions(driver);
-		String castate = state.getText();
-		statusreport.logger(castate);
-		return castate;
+		String actualcastate = state.getText();
+		statusreport.logger(actualcastate);
+
+		if (actualcastate.equalsIgnoreCase(castate))
+		{
+			System.out.println("CA Promoted to: "+actualcastate+" state successfully");
+			statusreport.screenshot( "CA promote to "+actualcastate+" state success.jpg");
+		}
+		else
+		{
+			System.out.println("CA promote failed");
+			statusreport.screenshot("CA promote to Inwork state Failed.jpg");
+		}
 	}
 	
 	public void switchtodefault()
