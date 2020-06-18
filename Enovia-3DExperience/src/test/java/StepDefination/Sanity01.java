@@ -275,7 +275,7 @@ public class Sanity01 {
 		Thread.sleep(5000);
 		//partproperty.clickonediticon();
 		partproperty.clickdisplaymodeicon();
-		partproperty.selecttableview();
+		
 		Thread.sleep(1000);
 		partproperty.clickcheckboxtoenterchildpart();
 		partproperty.clickonInsertparticon();

@@ -218,17 +218,20 @@ public class PartEBOMPage {
 	public void clickdisplaymodeicon()
 	{
 		statusreport = new ReportFunctions(driver);
-		if (displaymodeicon.isDisplayed())
+		
+		try
 		{
-		displaymodeicon.click();
-		statusreport.logger("display mode icon is clicked");
+			displaymodeicon.click();
+			statusreport.logger("display mode icon is clicked");
+			selecttableview();
 		}
-		else
+		
+		catch(Exception NoSuchElementException)
 		{
 			overflowbutton.click();
 			displayoptionwhennotdisplayed.click();
-			tableoptionwhennotdisplayed.click();
 			statusreport.logger("display mode icon is clicked");
+			selecttableviewwhennotdisplayed();
 		}
 		
 	}
@@ -239,6 +242,14 @@ public class PartEBOMPage {
 		tableoption.click();
 		statusreport.logger("Table view option is selected");
 	}
+	
+	public void selecttableviewwhennotdisplayed()
+	{
+		statusreport = new ReportFunctions(driver);
+		tableoptionwhennotdisplayed.click();
+		statusreport.logger("Table view option is selected");
+	}
+	
 	
 	public void clickonchangeicon()
 	{
