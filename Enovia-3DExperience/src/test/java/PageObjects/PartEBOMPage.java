@@ -43,7 +43,7 @@ public class PartEBOMPage {
 	@FindBy(xpath="//td[@title='Insert Part']")
 	WebElement insertparticon;
 	
-	@FindBy(xpath="/html/body/div[2]/div/div[1]/div[2]/ul/li[2]/a/label")
+	@FindBy(xpath="//div[@class='group-body']//label[contains(text(),'New Part...')]")
 	WebElement Inserparttext;
 	
 	@FindBy(xpath = "/html/body/form[1]/div[2]/div[2]/div[2]/table/tbody/tr[3]/td[2]/div/table/tbody/tr/td[6]")
@@ -52,10 +52,10 @@ public class PartEBOMPage {
 	@FindBy(css="//*[@id=\"ApplyButton\"]")
 	WebElement savebutton;
 	
-	@FindBy(xpath="//*[@id=\"displayModeMenu\"]")
+	@FindBy(xpath="//*[@id='divToolbar']//td[@id='displayModeMenu']")
 	WebElement displaymodeicon;
 	
-	@FindBy(xpath="/html/body/div[11]/div/ul/li[1]/a/label")
+	@FindBy(xpath="//div[@class='menu-panel display-mode page']//label[contains(text(),'Table')]")
 	WebElement tableoption;
 
 	@FindBy(xpath="//td[@title='Change']")
@@ -63,6 +63,15 @@ public class PartEBOMPage {
 	
 	@FindBy(xpath="/html/body/div[5]/div/div[2]/div[2]/ul/li[2]/a/label")
 	WebElement newchangeorder;
+	
+	@FindBy(xpath="/html/body/form[1]/div[1]/div[1]/div/div[2]/table/tbody/tr/td[3]")
+	WebElement overflowbutton;
+	
+	@FindBy(xpath="//div[@class='menu-panel page']//div[@class='group expanded']//div[@class='group-head icon']")
+	WebElement displayoptionwhennotdisplayed;
+	
+	@FindBy(xpath="//div[@class='group-body']//label[contains(text(),'Table')]")
+	WebElement tableoptionwhennotdisplayed;
 	
 	public void  visibilityofpartpropertypage()
 	{
@@ -79,7 +88,7 @@ public class PartEBOMPage {
 	
 	public void visibilityofebompage()
 	{
-		
+		statusreport = new ReportFunctions(driver);
 		if(pencilicon.isDisplayed())
 		{
 			statusreport.logger("EBOM Properties page is open");
@@ -176,7 +185,7 @@ public class PartEBOMPage {
 			statusreport.logger("Child Part Created");
 			String childpartno = firstchildpart.getText();
 			
-			excel.writeexcel("PartDetails",childpartno,2); 
+			//excel.writeexcel("PartDetails",childpartno,2); 
 			//driver.switchTo().defaultContent();
 			Thread.sleep(2000);
 			statusreport.screenshot( "Childpart inserted success.jpg");
@@ -209,8 +218,19 @@ public class PartEBOMPage {
 	public void clickdisplaymodeicon()
 	{
 		statusreport = new ReportFunctions(driver);
+		if (displaymodeicon.isDisplayed())
+		{
 		displaymodeicon.click();
 		statusreport.logger("display mode icon is clicked");
+		}
+		else
+		{
+			overflowbutton.click();
+			displayoptionwhennotdisplayed.click();
+			tableoptionwhennotdisplayed.click();
+			statusreport.logger("display mode icon is clicked");
+		}
+		
 	}
 	
 	public void selecttableview()

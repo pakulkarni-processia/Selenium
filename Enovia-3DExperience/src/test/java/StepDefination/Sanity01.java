@@ -272,7 +272,7 @@ public class Sanity01 {
 		
 		partproperty = new PartEBOMPage(driver);
 		
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		//partproperty.clickonediticon();
 		partproperty.clickdisplaymodeicon();
 		partproperty.selecttableview();

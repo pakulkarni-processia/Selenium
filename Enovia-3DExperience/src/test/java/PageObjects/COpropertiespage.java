@@ -156,12 +156,12 @@ public class COpropertiespage {
 		statusreport.logger(costate);
 		if (actualcostate.equalsIgnoreCase(costate))
 		{
-			System.out.println("CO Promoted to: "+actualcostate+" state successfully");
-			statusreport.screenshot("CO promoted to :"+actualcostate+"state.jpg");
+			statusreport.logger("CO Promoted to: "+actualcostate+" state successfully");
+			statusreport.screenshot("CO promoted to "+actualcostate+"state.jpg");
 		}
 		else
 		{
-			System.out.println("CO promote failed");
+			statusreport.logger("CO promote failed");
 			statusreport.screenshot("CO promote Failed.jpg");
 		}
 	}
@@ -226,10 +226,7 @@ public class COpropertiespage {
 	{
 		statusreport = new ReportFunctions(driver);
 		driver.switchTo().defaultContent();
-		
-		
-		
-		
+				
 		driver.switchTo().frame("content");
 		driver.switchTo().frame("detailsDisplay");
 		driver.switchTo().frame("portalDisplay");
