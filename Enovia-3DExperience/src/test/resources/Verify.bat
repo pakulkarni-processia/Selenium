@@ -5,6 +5,6 @@ set data=%d%
 
 Echo zipping...
 
-"C:\Program Files\7-Zip\7z.exe" a -tzip "D:\Automation\Eclipse Workspace\Enovia-3DExperience\target\Cucumber-Report\Cucumber_Report_%d%.zip" "C:\Users\pakulkarni\git\Selenium\Enovia-3DExperience\target\Cucumber-Report\cucumber-html-reports"
+"C:\Program Files\7-Zip\7z.exe" a -tzip "C:\Users\pakulkarni\git\Selenium\Enovia-3DExperience\target\Cucumber-Report\Cucumber_Report_%d%.zip" "C:\Users\pakulkarni\git\Selenium\Enovia-3DExperience\target\Cucumber-Report\cucumber-html-reports"
 
 echo Done!

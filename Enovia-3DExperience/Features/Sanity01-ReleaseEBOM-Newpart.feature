@@ -1,3 +1,4 @@
+@AT-36
 Feature: Validate creation of EBOM and Release of all parts
 
 @AT-25 @AT-24

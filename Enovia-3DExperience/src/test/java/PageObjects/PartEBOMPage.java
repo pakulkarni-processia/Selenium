@@ -67,7 +67,7 @@ public class PartEBOMPage {
 	@FindBy(xpath="/html/body/form[1]/div[1]/div[1]/div/div[2]/table/tbody/tr/td[3]")
 	WebElement overflowbutton;
 	
-	@FindBy(xpath="//div[@class='menu-panel page']//div[@class='group expanded']//div[@class='group-head icon']")
+	@FindBy(xpath="//div[@class='menu-panel page']//div[@class='group collapsed']//div[@class='group-head icon']//label[contains(text(),'DisplayMode')]")
 	WebElement displayoptionwhennotdisplayed;
 	
 	@FindBy(xpath="//div[@class='group-body']//label[contains(text(),'Table')]")

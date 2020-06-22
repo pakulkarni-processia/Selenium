@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite failures="1" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="10" time="956.460023">
+<testcase classname="Validate creation of EBOM and Release of all parts" name="Login to 3DExperience for all users" time="75.523994">
+<system-out><![CDATA[Given Experience url is Open................................................passed
+When experience logo is displayed...........................................passed
+And Enter credentials in "admin_platform" and "enoviaV6" and click on Login button.passed
+Then Verify Login is success................................................passed
+And Click on Profile logo and update Credentials............................passed
+And Verify Credentials are updated for user.................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Validate creation of EBOM and Release of all parts" name="Create New Part" time="41.694244">
+<system-out><![CDATA[Given User login to 3DExperience............................................passed
+When Click on Add button and Navigate to Engineering, Part, Create Part.....passed
+And Enter details in Mandatory fields on create Part page...................passed
+And Click on Ok button......................................................passed
+Then Verify Part is Created successfully....................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Validate creation of EBOM and Release of all parts" name="Insert as child, New Part" time="249.589627">
+<system-out><![CDATA[Given Parent part is created and properties page is open....................passed
+And navigate to categories EBOM.............................................passed
+And click on Insert Part Button, Insert as child New part...................passed
+And enter details in mandatory fields.......................................passed
+And click on OK button......................................................passed
+Then verify part is created successfully under parent part..................passed
+]]></system-out>
+</testcase>
+<testcase classname="Validate creation of EBOM and Release of all parts" name="Create Change Order" time="19.805149">
+<system-out><![CDATA[When select all part checkbox, click on Change, Change Order, Add To New....passed
+And Enter mandatory fields on change order page.............................passed
+Then navigate to categories Change management...............................passed
+And Verify Change Order is created successfully.............................passed
+]]></system-out>
+</testcase>
+<testcase classname="Validate creation of EBOM and Release of all parts" name="Open Change Order" time="18.780932">
+<system-out><![CDATA[When click on Change order name.............................................passed
+And navigate to categories, CO name.........................................passed
+And click on Edit and added Approver List...................................passed
+And Click on Done button....................................................passed
+And Promote CO to In Work state.............................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Validate creation of EBOM and Release of all parts" name="Open Change Action" time="41.753089">
+<system-out><![CDATA[When navigate to Categories, Content........................................passed
+And click on CA name under Related Change Action............................passed
+And navigate to categories , CA Name........................................passed
+And click on Edit and add reviewer..........................................passed
+And Click on Done...........................................................passed
+And Promote CA to In work state.............................................passed
+Then validate CA is promoted to Inwork state................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Validate creation of EBOM and Release of all parts" name="Promote BOM- Mass Promote" time="11.243014">
+<system-out><![CDATA[When navigate to Categories, Content........................................passed
+And Select all parts check box..............................................passed
+And Click Tools- Mass Promote...............................................passed
+And Close - Success message displayed.......................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Validate creation of EBOM and Release of all parts" name="Promote CA And approve route" time="59.212694">
+<system-out><![CDATA[Given Navigate to CA properties page........................................passed
+And Click on Promote........................................................passed
+Then verify CA is promoted to In Approval state.............................passed
+When navigate to Messages (Icon)............................................passed
+And Click on New Task Assignment Notice.....................................passed
+And Click on Inbox Task IT-XXX no...........................................passed
+And Click on Approve button from tool bar...................................passed
+And enter comments and click on Approve button..............................passed
+And Close the window and refresh CA page....................................passed
+Then verify CA is promoted to Approved state................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Validate creation of EBOM and Release of all parts" name="Promote CO to complete state" time="427.536887">
+<failure message="org.openqa.selenium.NoSuchFrameException: No frame element found by name or id content&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'IN-LP-110', ip: '169.254.11.205', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_202'&#10;Driver info: driver.version: unknown&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver$RemoteTargetLocator.frame(RemoteWebDriver.java:885)&#13;&#10;&#9;at PageObjects.Taskapprovalpage.switchframeonapprovalpage(Taskapprovalpage.java:49)&#13;&#10;&#9;at StepDefination.Sanity01.click_on_Approve_from_tool_bar(Sanity01.java:868)&#13;&#10;&#9;at ✽.And click on Approve from tool bar(./Features/Sanity01-ReleaseEBOM-Newpart.Feature:96)&#13;&#10;"><![CDATA[And click on CO name from CA properties page................................passed
+Then verify CO page is open.................................................passed
+And click on CO name from Categories, Properties page display...............passed
+And Click on Approvals then click on task ID................................passed
+And click on Approve from tool bar..........................................failed
+And enter comments, click on Approve........................................skipped
+And close the window........................................................skipped
+Then verify CO is promoted to Complete state Automatically..................skipped
+
+StackTrace:
+org.openqa.selenium.NoSuchFrameException: No frame element found by name or id content
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'IN-LP-110', ip: '169.254.11.205', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_202'
+Driver info: driver.version: unknown
+	at org.openqa.selenium.remote.RemoteWebDriver$RemoteTargetLocator.frame(RemoteWebDriver.java:885)
+	at PageObjects.Taskapprovalpage.switchframeonapprovalpage(Taskapprovalpage.java:49)
+	at StepDefination.Sanity01.click_on_Approve_from_tool_bar(Sanity01.java:868)
+	at ✽.And click on Approve from tool bar(./Features/Sanity01-ReleaseEBOM-Newpart.Feature:96)
+]]></failure>
+</testcase>
+<testcase classname="Validate creation of EBOM and Release of all parts" name="CA promoted to complete state" time="11.320393">
+<system-out><![CDATA[And navigate to categories, content.........................................passed
+And click on CA.............................................................passed
+Then verify CA is promoted to Complete state and part are promoted to Released state..passed
+And Signout and close window................................................passed
+]]></system-out>
+</testcase>
+</testsuite>

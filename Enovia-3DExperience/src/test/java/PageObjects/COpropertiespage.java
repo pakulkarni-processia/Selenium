@@ -2,6 +2,7 @@ package PageObjects;
 
 import java.io.IOException;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,6 +20,8 @@ public class COpropertiespage {
 	public ReadExcel read;
 	ReportFunctions statusreport;
 	HomePage home;
+	JavascriptExecutor js;
+	
 	public  COpropertiespage(WebDriver newdriver)
 	{
 		driver = newdriver;
@@ -241,6 +244,9 @@ public class COpropertiespage {
 	public void clickontasknumberforapprove()
 	{
 		statusreport = new ReportFunctions(driver);
+		js = (JavascriptExecutor) driver;
+		
+		js.executeScript("arguments[0].scrollIntoView();", task);
 		task.click();
 		statusreport.logger("Clicked on Task");
 	}
